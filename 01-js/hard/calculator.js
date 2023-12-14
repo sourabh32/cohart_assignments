@@ -15,7 +15,61 @@
 
   Once you've implemented the logic, test your code by running
 */
+class Calculator {
+  constructor() {
+    this.result = 0;
+  }
 
-class Calculator {}
+  add(x) {
+    this.result += x;
+  }
+
+  subtract(x) {
+    this.result -= x;
+  }
+
+  multiply(x) {
+    this.result *= x;
+  }
+
+  divide(x) {
+    if (x === 0) {
+      throw new Error("Division by zero");
+    } else {
+      this.result /= x;
+    }
+  }
+
+  getResult() {
+    return this.result;
+  }
+
+  clear() {
+    this.result = 0;
+  }
+
+  calculate(str) {
+    // Validate the expression before evaluating
+    if (!this.isValidExpression(str)) {
+      throw new Error("Invalid expression");
+    }
+
+    // Evaluate the expression using eval
+    this.result = eval(str);
+
+    // Check if the result is a finite number
+    if (!Number.isFinite(this.result)) {
+      throw new Error("Invalid result");
+    }
+
+    return this.result;
+  }
+
+  isValidExpression(str) {
+    
+    const validRegex = /^[0-9+\-*/().\s]+$/;
+    return validRegex.test(str);
+  }
+}
 
 module.exports = Calculator;

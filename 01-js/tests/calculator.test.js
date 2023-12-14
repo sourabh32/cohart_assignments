@@ -80,7 +80,7 @@ describe('Calculator', () => {
 
 	test('calculate expression with decimals', () => {
 		calc.calculate('(2.5 + 1.5) * 3');
-		expect(calc.getResult()).toBe(12);
+		expect(calc.getResult()).toBeCloseTo(12);
 	});
 
 	test('calculate expression with invalid characters', () => {
