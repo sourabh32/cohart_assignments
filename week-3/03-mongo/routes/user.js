@@ -22,7 +22,7 @@ router.post('/courses/:courseId', userMiddleware, async (req, res) => {
     const course = await Course.findById(courseId) // Select the fields you need
     const user = await User.findById(req.user.id);
 
-    user.purchased = [...user.purchased, { courseId: course._id, title: course.title }]; // Example fields
+    user.purchased = [...user.purchased, { courseId: course._id, title: course.title }]; 
     await user.save();
 
     res.status(200).json({ courses: user.purchased });

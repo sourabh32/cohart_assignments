@@ -11,8 +11,17 @@ const Assignment3 = () => {
         // Add more items as needed
     ]);
 
-    // Your code starts here
-    const totalValue = 0;
+    
+
+    const calculatevalue = (input)=>{
+        let result = 0;
+
+     for(const item of input){
+       result+=item.value;
+     }
+     return result;
+    }
+   const  totalValue = useMemo(()=>calculatevalue(items),[items])
     // Your code ends here
     return (
         <div>
